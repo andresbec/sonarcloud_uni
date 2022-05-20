@@ -43,8 +43,8 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"andresbec_sonarcloud_uni" /o:"andresbec" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build sonarcloud_uni/RestAPI/RestAPI.csproj --configuration Release;
+          dotnet build RestAPI/RestAPI.csproj --configuration Release;
           
-          dotnet test sonarcloud_uni/IntegrationTests/Tests.csproj --no-build --collect:"XPlat Code Coverage";
+          dotnet test IntegrationTests/Tests.csproj --no-build --collect:"XPlat Code Coverage";
 
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
